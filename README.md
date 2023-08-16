@@ -1,27 +1,15 @@
-# React + TypeScript + Vite
+# Wetter IO in Typescript ReactJS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app shows current weather using the Current Weather API from OpenWeatherMap
 
-Currently, two official plugins are available:
+### To run the app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Download the repo to your machine
+2. Make sure you have the `APIKEY` generated for the Current Weather API from OpenWeatherMap
+3. Create a `.env` file at `/project-folder` then add this line into it:
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
+```
+4. Run this command in your terminal `npm run dev`
+5. The terminal shows which port your localhost runs
+6. Enjoy :D
