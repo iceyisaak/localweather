@@ -1,0 +1,48 @@
+@import '../../styles/abstract/mixins';
+
+.label {
+    font-size: 2.2rem;
+}
+
+// .form {
+//   margin: 2rem 2rem 0;
+//   height: 10rem;
+//   display: flex;
+//   justify-content: center;
+// }
+
+.input {
+    width: 73vw;
+    height: 3rem;
+    margin-right: 1rem;
+    padding-left: 0.5rem;
+
+    @include respond(md) {
+        width: 50rem;
+    }
+}
+
+.location-input {
+    display: flex;
+    align-items: center;
+}
+
+.locator {
+    font-size: 3rem;
+}
+
+.error-msg {
+    color: #be222f;
+}
+
+.btn {
+    width: 73vw;
+    height: 3rem;
+    color: #ced9df;
+    background: #1292d6;
+    border: none;
+
+    @include respond(md) {
+        width: 50rem;
+    }
+}

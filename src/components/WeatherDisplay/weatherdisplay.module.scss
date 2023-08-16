@@ -1,0 +1,28 @@
+.WeatherDisplay {
+    width: 40rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // width: 40vw;
+
+    &-name {
+        font-size: 2.5rem;
+        color: #49d588;
+    }
+}
+
+.description {
+    font-size: 2.5rem;
+    text-transform: capitalize;
+}
+
+.temperature {
+    font-size: 5rem;
+    color: #fff;
+}
