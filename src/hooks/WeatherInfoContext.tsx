@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { type WeatherData, type WeatherInfoContext } from '../types/weather-info';
+import { WeatherData, type WeatherInfoContext } from '../types/weather-info';
 
 
 const APIKEY = import.meta.env.VITE_OPENWEATHERMAP_APIKEY;
@@ -24,7 +24,7 @@ const WeatherInfoContextProvider = ({ children }: { children: ReactNode }) => {
         statusCode: '',
         statusMessage: ''
     });
-    const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
+    const [weatherData, setWeatherData] = useState<WeatherData | []>([]);
     const [hasLocation, setHasLocation] = useState(false);
 
     let unit = 'metric';

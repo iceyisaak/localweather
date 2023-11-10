@@ -4,6 +4,7 @@ export type WeatherInfoContext = {
         statusCode: string,
         statusMessage: string
     },
+    weatherData: WeatherData,
     // weatherData: {
     //     name: string,
     //     sys: {
@@ -28,18 +29,18 @@ export type WeatherInfoContext = {
 
 export type WeatherData = {
     // weatherData: {
-    name: string,
-    sys: {
+    name?: string | undefined,
+    sys?: {
         country: string,
     },
-    weather: [
+    weather?: [
         {
             main: string,
             description: string,
             icon: string
         }
     ],
-    main: {
+    main?: {
         temp: number
     }
     // },
