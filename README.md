@@ -24,7 +24,7 @@ VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ## Sources, Technologies, and Dependencies
 
 ### Sources
-Favicon
+[Favicon](https://www.svgrepo.com/svg/530233/weather)
 
 ### Technologies
 - React
@@ -32,6 +32,7 @@ Favicon
 - SCSS
 - React Icons
 - React Context API
+- localStorage
 - Geolocation API
 
 ### Dependencies
