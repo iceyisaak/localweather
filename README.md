@@ -11,14 +11,14 @@
 
 ## How to run this project
 1. Download the repo to your machine
-2. Make sure you have the `APIKEY` generated for the Current Weather API from OpenWeatherMap
+2. Make sure you have the `APIKEY` generated from the OpenWeatherMap
 3. Create a `.env` file at `/project-folder` then add this line into it:
 ```
 VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ```
-4. Run this command in your terminal `npm run dev`
-5. The terminal shows which port your localhost runs
-6. Enjoy :D
+1. Run this command in your terminal `npm run dev`
+2. The terminal shows which port your localhost runs
+3. Enjoy :D
 
 
 ## Sources, Technologies, and Dependencies
