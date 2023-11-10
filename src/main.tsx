@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
 import Home from '../src/components/Home';
-import WeatherInfoContextProvider from './hooks/WeatherInfoContext';
+import { WeatherInfoContextProvider } from './hooks/WeatherInfoContext';
 
 import './styles/GlobalStyle.scss';
 

@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { type WeatherData, type WeatherInfoContext } from '../types/weather-info';
 
 
 const APIKEY = import.meta.env.VITE_OPENWEATHERMAP_APIKEY;
@@ -10,39 +11,12 @@ const APIKEY = import.meta.env.VITE_OPENWEATHERMAP_APIKEY;
 //   APIKEY = import.meta.env.OPENWEATHERMAP_APIKEY;
 // }
 
-interface WeatherInfoInterface {
-    isLoading: boolean,
-    errorInfo: {
-        statusCode: string,
-        statusMessage: string
-    },
-    weatherData: {
-        name: string,
-        sys: {
-            country: string,
-
-        },
-        weather: [
-            {
-                main: string,
-                description: string,
-                icon: string
-            }
-        ],
-        main: {
-            temp: number
-        }
-    },
-    searchLocation: (searchTerm: string) => Promise<void>,
-    hasLocation: boolean,
-    getCoords: () => void,
-    resetLocation: () => void
-}
 
 
-export const WeatherInfoContext = createContext<WeatherInfoInterface>(null!);
 
-const WeatherInfoContextProvider = ({ children }: { children: React.ReactNode }) => {
+const WeatherInfoContext = createContext<WeatherInfoContext>(null!);
+
+const WeatherInfoContextProvider = ({ children }: { children: ReactNode }) => {
 
 
     const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +24,7 @@ const WeatherInfoContextProvider = ({ children }: { children: React.ReactNode })
         statusCode: '',
         statusMessage: ''
     });
-    const [weatherData, setWeatherData] = useState({});
+    const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
     const [hasLocation, setHasLocation] = useState(false);
 
     let unit = 'metric';
@@ -136,7 +110,7 @@ const WeatherInfoContextProvider = ({ children }: { children: React.ReactNode })
         localStorage.removeItem('weatherLocation');
         setHasLocation(false);
         setIsLoading(false);
-        setWeatherData({});
+        setWeatherData([]);
         setErrorInfo({
             statusCode: '',
             statusMessage: ''
@@ -153,7 +127,7 @@ const WeatherInfoContextProvider = ({ children }: { children: React.ReactNode })
 
 
 
-    const WeatherInfoContextValue: WeatherInfoInterface = {
+    const WeatherInfoContextValue = {
         weatherData,
         searchLocation,
         isLoading,
@@ -171,4 +145,8 @@ const WeatherInfoContextProvider = ({ children }: { children: React.ReactNode })
     );
 };
 
-export default WeatherInfoContextProvider;
+export const useWeatherInfoContext = () => {
+    return useContext(WeatherInfoContext)
+}
+
+export { WeatherInfoContext, WeatherInfoContextProvider };

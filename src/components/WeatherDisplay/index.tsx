@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import { IoLocationOutline } from 'react-icons/io5';
 import { RiCloseCircleLine } from 'react-icons/ri';
-import { WeatherInfoContext } from "../../hooks/WeatherInfoContext";
+import { useWeatherInfoContext } from "../../hooks/WeatherInfoContext";
 
 import style from './weatherdisplay.module.scss';
 
@@ -18,7 +17,7 @@ const WeatherDisplay = () => {
         },
         resetLocation,
 
-    } = useContext(WeatherInfoContext);
+    } = useWeatherInfoContext();
 
 
     return (

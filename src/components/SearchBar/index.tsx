@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { MdMyLocation } from 'react-icons/md';
 import { WeatherInfoContext } from '../../hooks/WeatherInfoContext';
 
@@ -20,13 +20,13 @@ const SearchBar = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
 
-    const onSubmit = (e: React.FormEvent) => {
+    const onSubmit = (e: FormEvent) => {
         e.preventDefault();
         searchLocation(searchTerm);
         setSearchTerm('');
     };
 
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const location = e.target.value;
         setSearchTerm(location);
     };
