@@ -1,17 +1,16 @@
 
 import { useAtom } from 'jotai';
-import { IoLocationOutline } from 'react-icons/io5';
-import { RiCloseCircleLine } from "react-icons/ri";
 import { IMAGEURL } from '../../api';
 import { getCurrentWeatherByGeolocation } from '../../api/current-weather';
 import { coordinatesAtom } from '../../features/weather-initialstate';
+
+// import { RiCloseCircleLine } from "react-icons/ri";
+import { IoLocationOutline } from 'react-icons/io5';
 import style from './weatherdisplay.module.scss';
 
 
 
 const WeatherDisplay = () => {
-
-
 
 
     const [coordinates] = useAtom(coordinatesAtom)
@@ -21,7 +20,6 @@ const WeatherDisplay = () => {
 
     return (
         <div className={`${style['WeatherDisplay']}`}>
-            <h1>WEATHER DISPLAY!!!!!</h1>
             <div className={`${style['location']} ${style['location-name']}`}>
                 <h3>
                     <IoLocationOutline />  {data?.name}, {data?.sys && data?.sys?.country} {'    '}
