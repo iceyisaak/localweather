@@ -1,9 +1,13 @@
+import { Provider } from 'jotai';
 import React from 'react';
 import { createRoot } from "react-dom/client";
 import Home from '../src/components/Home';
-import { WeatherInfoContextProvider } from './hooks/WeatherInfoContext';
 
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './styles/GlobalStyle.scss';
+
+const queryClient = new QueryClient
 
 const rootElement = document.getElementById("root")
 
@@ -11,8 +15,10 @@ const root = createRoot(rootElement!)
 
 root.render(
   <React.StrictMode>
-    <WeatherInfoContextProvider>
-      <Home />
-    </WeatherInfoContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <Provider>
+        <Home />
+      </Provider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

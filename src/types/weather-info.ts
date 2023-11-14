@@ -10,5 +10,5 @@ export type WeatherInfoContext = {
     searchLocation: (searchTerm: string) => void,
     hasLocation: boolean,
     getCoords: () => void,
-    resetLocation: () => void
+    resetLocation: () => void,
 }

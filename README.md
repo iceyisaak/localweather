@@ -1,5 +1,5 @@
 # WeatherApp
-###### ver: Typescript ReactJS
+###### variant: Typescript ReactJS + Tanstack Query
 ###### 20231110
 
 ## This app

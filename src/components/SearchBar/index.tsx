@@ -1,28 +1,21 @@
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { MdMyLocation } from 'react-icons/md';
-import { WeatherInfoContext } from '../../hooks/WeatherInfoContext';
 
+import { useAtom } from "jotai";
+import { coordinatesAtom } from "../../features/weather-initialstate";
 import style from './searchbar.module.scss';
 
 
 
 const SearchBar = () => {
 
-    const {
-        searchLocation,
-        getCoords,
-        errorInfo: {
-            statusCode,
-            statusMessage
-        }
-    } = useContext(WeatherInfoContext);
-
-
     const [searchTerm, setSearchTerm] = useState('');
+    const [, setCoordinates] = useAtom(coordinatesAtom)
+
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
-        searchLocation(searchTerm);
+        alert('onSubmit()')
         setSearchTerm('');
     };
 
@@ -30,6 +23,15 @@ const SearchBar = () => {
         const location = e.target.value;
         setSearchTerm(location);
     };
+
+
+    const getCoordinatesHandler = () => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setCoordinates(position)
+            }
+        )
+    }
 
 
     return (
@@ -52,14 +54,11 @@ const SearchBar = () => {
                     />
                     <span>
                         <MdMyLocation
-                            onClick={getCoords}
+                            onClick={getCoordinatesHandler}
                             className={`${'pointer'} ${style['locator']}`}
                         />
                     </span>
                 </div>
-                <p className={`${style['error-msg']}`}>
-                    {statusCode && statusMessage}
-                </p>
                 <button className={`${style['btn']} ${'pointer'}`}>
                     Check Weather
                 </button>

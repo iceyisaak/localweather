@@ -1,28 +1,32 @@
-import { useContext } from 'react';
+import { useEffect } from 'react';
 import SearchBar from '../SearchBar';
-import WeatherDisplay from '../WeatherDisplay';
+// import WeatherDisplay from '../WeatherDisplay';
 
-import { WeatherInfoContext } from '../../hooks/WeatherInfoContext';
 import style from './home.module.scss';
+import { useAtom } from 'jotai';
+import { coordinatesAtom } from '../../features/weather-initialstate';
+import WeatherDisplay from '../WeatherDisplay';
 
 
 const Home = () => {
 
+    const [coordinates] = useAtom(coordinatesAtom)
 
-    const {
-        hasLocation,
-        isLoading
-    } = useContext(WeatherInfoContext);
+    useEffect(() => {
+        console.log('coordinates: ', coordinates)
+    }, [coordinates])
+
+
 
     return (
         <>
             <div className={`${style['Home']}`}>
-                <header className={`${style['header']}`}>Weatherapp</header>
+                <header className={`${style['header']}`}>LocalWeather</header>
                 <div className={`${style['container']}`}>
-                    {isLoading && <h1>LOADING...</h1>}
-                    {!hasLocation ?
-                        <SearchBar /> :
-                        <WeatherDisplay />
+                    {
+                        !coordinates ?
+                            <SearchBar /> :
+                            <WeatherDisplay />
                     }
                 </div>
             </div>
