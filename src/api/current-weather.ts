@@ -8,9 +8,10 @@ import { type CurrentPosition } from "../types/location"
 
 export const getCurrentWeatherByGeolocation = ({ lat, lon }: CurrentPosition) => {
 
-    const APINAME = 'geolocation-weather'
+    const APINAME = 'weather'
     const geolocation = `?lat=${lat}&lon=${lon}`
     const APIURL = `${BASEURL}/${APINAME}${geolocation}${queryUnit}${appID}`
+    console.log(APIURL)
 
 
     return useQuery({
@@ -27,7 +28,7 @@ export const getCurrentWeatherByGeolocation = ({ lat, lon }: CurrentPosition) =>
 
 
 export const getCurrentWeatherByLocationName = (locality: CurrentPosition) => {
-    const APINAME = 'search-weather'
+    const APINAME = 'weather'
     const locationName = `?q=${locality}`;
     const APIURL = `${BASEURL}/${APINAME}/${locationName}/${queryUnit}/${APIKEY}`
 

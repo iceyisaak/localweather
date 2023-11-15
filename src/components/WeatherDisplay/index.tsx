@@ -21,6 +21,7 @@ const WeatherDisplay = () => {
     const lon = coordinates[0]?.lon
 
     const { data } = getCurrentWeatherByGeolocation({ lat, lon })
+    console.log('data: ', data)
     // const { data } = getCurrentWeatherByLocationName(searchTermAtom)
 
 
