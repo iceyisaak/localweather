@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { RESET } from "jotai/utils";
-import { coordinatesAtom } from "./weather-initialstate";
+import { cPosition, coordinatesAtom, currentPositionAtom } from "./weather-initialstate";
 
 
 
@@ -8,26 +8,32 @@ const searchLocation = async (searchTerm: string) => {
     // setIsLoading(true);
 };
 
+// export const getCurrentPositionAtom = atom(
+//     null,
+//     (_, set) => {
 
-const getCoordinates = (position: GeolocationPosition) => {
+//     }
+// )
 
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    console.log('getCoordinates()')
-    const coordPosition = [{
-        lat,
-        lon
-    }]
-    return coordPosition
+
+const saveCoordinates = (position: GeolocationPosition) => {
+    const lat = position?.coords.latitude;
+    const lon = position?.coords.longitude;
+
+    return [
+        {
+            lat,
+            lon
+        }
+    ]
 }
 
 
-export const getCoordinatesAtom = atom(
+export const getCurrentPositionAtom = atom(
     null,
-    (_, set, coordinates: GeolocationPosition) => {
-        console.log('coordinates: ', coordinates)
-        set(coordinatesAtom, getCoordinates(coordinates))
-        console.log('coordinatesAtom: ', coordinatesAtom)
+    (_, set, position: GeolocationPosition) => {
+        console.log('position: ', position)
+        set(coordinatesAtom, saveCoordinates(position))
     }
 )
 
@@ -37,6 +43,7 @@ export const clearCoordinatesAtom = atom(
     null,
     (_, set) => {
         set(coordinatesAtom, RESET)
+        set(currentPositionAtom, '')
     }
 )
 

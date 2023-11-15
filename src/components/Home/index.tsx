@@ -24,7 +24,7 @@ const Home = () => {
                 <header className={`${style['header']}`}>LocalWeather</header>
                 <div className={`${style['container']}`}>
                     {
-                        !coordinates ?
+                        coordinates.length < 1 ?
                             <SearchBar /> :
                             <WeatherDisplay />
                     }

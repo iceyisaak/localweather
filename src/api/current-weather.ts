@@ -1,15 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { APIKEY, BASEURL, appID, queryUnit } from "."
+import { cPosition } from "../features/weather-initialstate"
 import { CurrentWeather } from "../types/current-weather"
 
 
-type WeatherPositon = {
-    lat: number,
-    lon: number
-}
 
-export const getCurrentWeatherByGeolocation = ({ lat, lon }: WeatherPositon) => {
+
+export const getCurrentWeatherByGeolocation = ({ lat, lon }: cPosition) => {
 
     // const lat = coordinates?.coords.latitude
     // const lon = coordinates?.coords.longitude

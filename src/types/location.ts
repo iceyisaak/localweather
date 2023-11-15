@@ -5,6 +5,6 @@ export type Location = {
 }
 
 export type WeatherCoordinates = {
-    lat: GeolocationPosition,
-    lon: GeolocationPosition
+    lat?: number,
+    lon?: number,
 }

@@ -4,10 +4,10 @@ import { IMAGEURL } from '../../api';
 import { getCurrentWeatherByGeolocation } from '../../api/current-weather';
 import { coordinatesAtom } from '../../features/weather-initialstate';
 
-import { RiCloseCircleLine } from "react-icons/ri";
 import { IoLocationOutline } from 'react-icons/io5';
+import { RiCloseCircleLine } from "react-icons/ri";
+import { clearCoordinatesAtom, getCurrentPositionAtom } from '../../features/weather-store';
 import style from './weatherdisplay.module.scss';
-import { clearCoordinatesAtom } from '../../features/weather-store';
 
 
 
@@ -22,6 +22,9 @@ const WeatherDisplay = () => {
 
     const { data } = getCurrentWeatherByGeolocation({ lat, lon })
 
+    const [currentPosition] = useAtom(getCurrentPositionAtom)
+
+    console.log('currentPositon: ', currentPosition)
 
     const resetLocationHandler = () => {
         clearCoordinates()
