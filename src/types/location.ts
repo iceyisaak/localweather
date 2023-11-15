@@ -1,10 +1,5 @@
-export type Location = {
-    city?: string,
-    lat?: GeolocationPosition,
-    lon?: GeolocationPosition
-}
-
-export type WeatherCoordinates = {
+export type CurrentPosition = {
     lat?: number,
     lon?: number,
+    locality?: string
 }

@@ -1,15 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { APIKEY, BASEURL, appID, queryUnit } from "."
-import { cPosition } from "../features/weather-initialstate"
 import { CurrentWeather } from "../types/current-weather"
+import { type CurrentPosition } from "../types/location"
 
 
 
+export const getCurrentWeatherByGeolocation = ({ lat, lon }: CurrentPosition) => {
 
-export const getCurrentWeatherByGeolocation = ({ lat, lon }: cPosition) => {
-
-    const APINAME = 'weather'
+    const APINAME = 'geolocation-weather'
     const geolocation = `?lat=${lat}&lon=${lon}`
     const APIURL = `${BASEURL}/${APINAME}${geolocation}${queryUnit}${appID}`
 
@@ -27,9 +26,9 @@ export const getCurrentWeatherByGeolocation = ({ lat, lon }: cPosition) => {
 
 
 
-export const getCurrentWeatherByLocationName = (searchTerm: string) => {
-    const APINAME = 'weather'
-    const locationName = `?q=${searchTerm}`;
+export const getCurrentWeatherByLocationName = (locality: CurrentPosition) => {
+    const APINAME = 'search-weather'
+    const locationName = `?q=${locality}`;
     const APIURL = `${BASEURL}/${APINAME}/${locationName}/${queryUnit}/${APIKEY}`
 
     return useQuery({

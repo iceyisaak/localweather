@@ -4,6 +4,14 @@ import { coordinatesAtom } from "./weather-initialstate";
 
 
 
+export const searchLocalityAtom = atom(
+    null,
+    (_, set, searchTerm: string) => {
+        console.log('searchTerm: ', searchTerm)
+    }
+)
+
+
 const saveCoordinates = (position: GeolocationPosition) => {
     const lat = position?.coords.latitude;
     const lon = position?.coords.longitude;
