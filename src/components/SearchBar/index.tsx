@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { MdMyLocation } from 'react-icons/md';
 
 import { useAtom } from "jotai";
-import { getCurrentPositionAtom } from "../../features/weather-store";
+import { getCoordinatesAtom } from "../../features/weather-store";
 import style from './searchbar.module.scss';
 
 
@@ -10,8 +10,7 @@ import style from './searchbar.module.scss';
 const SearchBar = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
-    // const [, getCoordinates] = useAtom(getCoordinatesAtom)
-    const [, getCurrentPosition] = useAtom(getCurrentPositionAtom)
+    const [, getCoordinates] = useAtom(getCoordinatesAtom)
 
 
     const onSubmit = (e: FormEvent) => {
@@ -29,8 +28,7 @@ const SearchBar = () => {
     const getCoordinatesHandler = () => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                // getCoordinates(position)
-                getCurrentPosition(position)
+                getCoordinates(position)
             }
         )
     }

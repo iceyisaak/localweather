@@ -1,8 +1,6 @@
-import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 
-// export type coordPosition = [cPosition]
 
 export type cPosition = {
     lat?: number,
@@ -11,4 +9,3 @@ export type cPosition = {
 
 
 export const coordinatesAtom = atomWithStorage<cPosition[] | []>('geolocation', [])
-export const currentPositionAtom = atom<GeolocationPosition | ''>('')

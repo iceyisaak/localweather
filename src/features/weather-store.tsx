@@ -1,19 +1,7 @@
 import { atom } from "jotai";
 import { RESET } from "jotai/utils";
-import { cPosition, coordinatesAtom, currentPositionAtom } from "./weather-initialstate";
+import { coordinatesAtom } from "./weather-initialstate";
 
-
-
-const searchLocation = async (searchTerm: string) => {
-    // setIsLoading(true);
-};
-
-// export const getCurrentPositionAtom = atom(
-//     null,
-//     (_, set) => {
-
-//     }
-// )
 
 
 const saveCoordinates = (position: GeolocationPosition) => {
@@ -29,38 +17,20 @@ const saveCoordinates = (position: GeolocationPosition) => {
 }
 
 
-export const getCurrentPositionAtom = atom(
+export const getCoordinatesAtom = atom(
     null,
     (_, set, position: GeolocationPosition) => {
-        console.log('position: ', position)
         set(coordinatesAtom, saveCoordinates(position))
     }
 )
-
 
 
 export const clearCoordinatesAtom = atom(
     null,
     (_, set) => {
         set(coordinatesAtom, RESET)
-        set(currentPositionAtom, '')
     }
 )
-
-
-
-
-const searchPosition = async (position: GeolocationPosition) => {
-
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    const weatherLocation = `?lat=${lat}&lon=${lon}`;
-
-    console.log('weatherLocation: ', weatherLocation)
-
-    // searchLocation(data.name);
-    // setIsLoading(false);
-};
 
 
 

@@ -12,11 +12,6 @@ const Home = () => {
 
     const [coordinates] = useAtom(coordinatesAtom)
 
-    useEffect(() => {
-        console.log('coordinates: ', coordinates)
-    }, [coordinates])
-
-
 
     return (
         <>
