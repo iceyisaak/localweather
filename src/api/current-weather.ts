@@ -11,8 +11,6 @@ export const getCurrentWeatherByGeolocation = ({ lat, lon }: CurrentPosition) =>
     const APINAME = 'weather'
     const geolocation = `?lat=${lat}&lon=${lon}`
     const APIURL = `${BASEURL}/${APINAME}${geolocation}${queryUnit}${appID}`
-    console.log(APIURL)
-
 
     return useQuery({
         queryKey: [APINAME],

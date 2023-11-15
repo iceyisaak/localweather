@@ -20,8 +20,7 @@ const WeatherDisplay = () => {
     const lat = coordinates[0]?.lat
     const lon = coordinates[0]?.lon
 
-    const { data } = getCurrentWeatherByGeolocation({ lat, lon })
-    console.log('data: ', data)
+    const { data: dataFromCoords } = getCurrentWeatherByGeolocation({ lat, lon })
     // const { data } = getCurrentWeatherByLocationName(searchTermAtom)
 
 
@@ -34,19 +33,19 @@ const WeatherDisplay = () => {
         <div className={`${style['WeatherDisplay']}`}>
             <div className={`${style['location']} ${style['location-name']}`}>
                 <h3>
-                    <IoLocationOutline />  {data?.name}, {data?.sys && data?.sys?.country} {'    '}
+                    <IoLocationOutline />  {dataFromCoords?.name}, {dataFromCoords?.sys && dataFromCoords?.sys?.country} {'    '}
                 </h3>
                 <RiCloseCircleLine onClick={resetLocationHandler} className={`${'pointer'}`} />
             </div>
             <p className={`${style['description']}`}>
-                {data?.weather && data?.weather[0].description}
+                {dataFromCoords?.weather && dataFromCoords?.weather[0].description}
             </p>
             <img
-                src={`${IMAGEURL}/${data?.weather && data?.weather[0].icon}@2x.png`}
-                alt={data?.weather && data?.weather[0].main}
+                src={`${IMAGEURL}/${dataFromCoords?.weather && dataFromCoords?.weather[0].icon}@2x.png`}
+                alt={dataFromCoords?.weather && dataFromCoords?.weather[0].main}
             />
             <h1 className={`${style['temperature']}`}>
-                {data?.main && Math.round(data?.main.temp)}°C
+                {dataFromCoords?.main && Math.round(dataFromCoords?.main.temp)}°C
             </h1>
         </div>
     );

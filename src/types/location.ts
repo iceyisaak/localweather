@@ -1,4 +1,5 @@
 export type CurrentPosition = {
     lat?: number,
-    lon?: number
+    lon?: number,
+    locality?: string
 }
