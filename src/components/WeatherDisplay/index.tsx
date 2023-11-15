@@ -4,9 +4,10 @@ import { IMAGEURL } from '../../api';
 import { getCurrentWeatherByGeolocation } from '../../api/current-weather';
 import { coordinatesAtom } from '../../features/weather-initialstate';
 
-// import { RiCloseCircleLine } from "react-icons/ri";
+import { RiCloseCircleLine } from "react-icons/ri";
 import { IoLocationOutline } from 'react-icons/io5';
 import style from './weatherdisplay.module.scss';
+import { clearCoordinatesAtom } from '../../features/weather-store';
 
 
 
@@ -14,9 +15,17 @@ const WeatherDisplay = () => {
 
 
     const [coordinates] = useAtom(coordinatesAtom)
-    const { data } = getCurrentWeatherByGeolocation(coordinates)
+    const [, clearCoordinates] = useAtom(clearCoordinatesAtom)
 
-    console.log('data: ', data)
+    const lat = coordinates[0]?.lat
+    const lon = coordinates[0]?.lon
+
+    const { data } = getCurrentWeatherByGeolocation({ lat, lon })
+
+
+    const resetLocationHandler = () => {
+        clearCoordinates()
+    }
 
     return (
         <div className={`${style['WeatherDisplay']}`}>
@@ -24,7 +33,7 @@ const WeatherDisplay = () => {
                 <h3>
                     <IoLocationOutline />  {data?.name}, {data?.sys && data?.sys?.country} {'    '}
                 </h3>
-                {/* <RiCloseCircleLine onClick={resetLocation} className={`${'pointer'}`} /> */}
+                <RiCloseCircleLine onClick={resetLocationHandler} className={`${'pointer'}`} />
             </div>
             <p className={`${style['description']}`}>
                 {data?.weather && data?.weather[0].description}

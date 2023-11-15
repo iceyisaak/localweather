@@ -4,7 +4,7 @@ export type Location = {
     lon?: GeolocationPosition
 }
 
-export type WeatherCoordinates = [
-    lat: Geolocation,
-    lon: Geolocation
-]
+export type WeatherCoordinates = {
+    lat: GeolocationPosition,
+    lon: GeolocationPosition
+}
