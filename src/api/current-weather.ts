@@ -31,16 +31,12 @@ export const getCurrentWeatherByLocationName = (searchTerm?: string) => {
     const locationName = `?q=${searchTerm}`;
     const APIURL = `${BASEURL}/${APINAME}${locationName}${queryUnit}${appID}`
 
-    console.log('searchTerm-API: ', searchTerm)
-    console.log('APIURL: ', APIURL)
 
     return useQuery({
         queryKey: [`${APINAME}-search`],
         queryFn: async () => {
             const response = await axios.get(APIURL)
-            console.log('response: ', response)
             const data: unknown = response.data
-            console.log('data: ', data)
             return data as CurrentWeather
         }
     })

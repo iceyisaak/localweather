@@ -1,23 +1,29 @@
-import { useEffect } from 'react';
-import SearchBar from '../SearchBar';
-// import WeatherDisplay from '../WeatherDisplay';
-
-import style from './home.module.scss';
 import { useAtom } from 'jotai';
 import { coordinatesAtom, localityAtom } from '../../features/weather-initialstate';
+import SearchBar from '../SearchBar';
 import WeatherDisplay from '../WeatherDisplay';
+
+import style from './home.module.scss';
+import { getCurrentWeatherByGeolocation, getCurrentWeatherByLocationName } from '../../api/current-weather';
+import { useState } from 'react';
 
 
 const Home = () => {
 
     const [coordinates] = useAtom(coordinatesAtom)
     const [locality] = useAtom(localityAtom)
+    // const [hideSearchBar, setHideSearchBar] = useState(false)
 
+    // console.log('coordinates: ', coordinates)
     // console.log('locality: ', locality)
 
-    // useEffect(() => {
-    //     return
-    // }, [coordinates, locality])
+    // const { isSuccess: gotWeatherByGeo } = getCurrentWeatherByGeolocation()
+    // const { isSuccess: gotWeatherBySearch } = getCurrentWeatherByLocationName()
+
+    // if (gotWeatherByGeo || gotWeatherBySearch) {
+    //     setHideSearchBar(true)
+    // }
+
 
     return (
         <>

@@ -17,6 +17,7 @@ const SearchBar = () => {
 
     const searchLocalityHandler = (e: FormEvent) => {
         e.preventDefault();
+        if (searchTerm === '') return
         setSearchLocality(searchTerm)
         setSearchTerm('');
     };

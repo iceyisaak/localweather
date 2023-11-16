@@ -36,7 +36,10 @@ const WeatherDisplay = () => {
             <div className={`${style['location']} ${style['location-name']}`}>
                 <h3>
                     <IoLocationOutline />
-                    {' '}{dataFromCoords?.name || dataFromSearch?.name},
+                    {' '}{
+                        dataFromCoords?.name ||
+                        dataFromSearch?.name
+                    },
                     {' '}
                     {
                         dataFromSearch?.sys && dataFromSearch?.sys?.country ||
