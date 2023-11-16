@@ -28,6 +28,9 @@ const SearchBar = () => {
 
 
     const getCoordinatesHandler = () => {
+
+        // setIsLoading(true)
+
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 getCoordinates(position)

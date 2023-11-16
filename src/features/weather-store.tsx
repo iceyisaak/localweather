@@ -1,15 +1,22 @@
 import { atom } from "jotai";
 import { RESET } from "jotai/utils";
-import { coordinatesAtom } from "./weather-initialstate";
+import { coordinatesAtom, localityAtom, searchTermAtom } from "./weather-initialstate";
 
 
 
 export const searchLocalityAtom = atom(
     null,
     (_, set, searchTerm: string) => {
-        console.log('searchTerm: ', searchTerm)
+        set(localityAtom, searchLocality(searchTerm))
+        set(searchTermAtom, '')
     }
 )
+
+export const searchLocality = (locality: string) => {
+    return [
+        { locality }
+    ]
+}
 
 
 const saveCoordinates = (position: GeolocationPosition) => {
@@ -37,40 +44,8 @@ export const clearCoordinatesAtom = atom(
     null,
     (_, set) => {
         set(coordinatesAtom, RESET)
+        set(localityAtom, RESET)
     }
 )
-
-
-
-
-// const setLocation = (data: any) => {
-
-//     const weatherLocationObj: Location = {
-//         city: data.name,
-//         lat: data.coord.lat,
-//         lon: data.coord.lon
-//     };
-
-//     localStorage.setItem('weatherLocation', JSON.stringify(weatherLocationObj));
-// };
-
-// const resetLocation = () => {
-//     localStorage.removeItem('weatherLocation');
-//     setHasLocation(false);
-//     setIsLoading(false);
-//     setWeatherData({});
-//     setErrorInfo({
-//         statusCode: '',
-//         statusMessage: ''
-//     });
-// };
-
-
-// useEffect(() => {
-//     let weatherLocation = JSON.parse(localStorage.getItem('weatherLocation')!);
-//     if (weatherLocation) {
-//         searchLocation(weatherLocation.city);
-//     }
-// }, []);
 
 
