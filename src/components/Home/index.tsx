@@ -18,7 +18,7 @@ const Home = () => {
                 <header className={`${style['header']}`}>LocalWeather</header>
                 <div className={`${style['container']}`}>
                     {
-                        coordinates.length < 1 || locality.length < 1 ?
+                        coordinates.length < 1 && locality.length < 1 ?
                             <SearchBar /> :
                             <WeatherDisplay />
                     }
