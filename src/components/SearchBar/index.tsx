@@ -31,7 +31,6 @@ const SearchBar = () => {
     const getCoordinatesHandler = () => {
 
         // setIsLoading(true)
-
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 getCoordinates(position)
@@ -69,7 +68,6 @@ const SearchBar = () => {
                     Check Weather
                 </button>
             </div>
-
         </form >
     );
 };

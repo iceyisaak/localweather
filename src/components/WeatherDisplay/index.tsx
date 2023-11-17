@@ -17,15 +17,7 @@ const WeatherDisplay = () => {
     const [currentPosition] = useAtom(currentPositionAtom)
     const [, clearCoordinates] = useAtom(clearCoordinatesAtom)
 
-    console.log('coords: ', currentPosition)
-
-    // const lat = currentPosition[0]?.lat
-    // const lon = currentPosition[0]?.lon
-    // const locationName = currentPosition[0]?.locationName
-    // const { data: weatherData } = useGetCurrentWeather({ lat, lon, locationName })
-
     const { data: weatherData } = useGetCurrentWeather(currentPosition[0])
-
 
 
     const resetLocationHandler = () => {
@@ -33,7 +25,6 @@ const WeatherDisplay = () => {
     }
 
     return (
-
         <div className={`${style['WeatherDisplay']}`}>
             <div className={`${style['location']} ${style['location-name']}`}>
                 <h3>
@@ -51,10 +42,9 @@ const WeatherDisplay = () => {
                 alt={weatherData?.weather && weatherData?.weather[0].main}
             />
             <h1 className={`${style['temperature']}`}>
-                {weatherData?.main && Math.round(weatherData?.main.temp)}°C
+                {weatherData?.main && Math.round(weatherData?.main.temp)} °C
             </h1>
         </div>
-
     );
 };
 
