@@ -8,12 +8,7 @@ import style from './home.module.scss';
 
 const Home = () => {
 
-    const [coordinates] = useAtom(currentPositionAtom)
-    // const [locality] = useAtom(localityAtom)
-
-    console.log('coords-home: ', coordinates)
-    // console.log('locality-home: ', locality)
-
+    const [currentPosition] = useAtom(currentPositionAtom)
 
     return (
         <>
@@ -21,7 +16,7 @@ const Home = () => {
                 <header className={`${style['header']}`}>LocalWeather</header>
                 <div className={`${style['container']}`}>
                     {
-                        coordinates.length < 1 ?
+                        currentPosition.length < 1 ?
                             <SearchBar /> :
                             <WeatherDisplay />
                     }

@@ -1,10 +1,10 @@
-import { ChangeEvent, FormEvent } from "react";
-import { MdMyLocation } from 'react-icons/md';
-
 import { useAtom } from "jotai";
-import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
-import style from './searchbar.module.scss';
+import { ChangeEvent, FormEvent } from "react";
 import { searchTermAtom } from "../../features/weather-initialstate";
+import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
+
+import { MdMyLocation } from 'react-icons/md';
+import style from './searchbar.module.scss';
 
 
 
