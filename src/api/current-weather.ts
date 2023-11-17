@@ -1,13 +1,26 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-import { BASEURL, appID, queryUnit } from "."
+import { BASEURL, appID } from "."
 import { CurrentWeather } from "../types/current-weather"
 import { type CurrentPosition } from "../types/location"
 
 
-export const useGetCurrentWeather = (currentPosition: CurrentPosition) => {
+type useGetCurrentWeather = {
+    currentPosition: CurrentPosition[],
+    selectedTempUnitName?: string
+}
 
-    const { lat, lon, locationName } = currentPosition
+
+export const useGetCurrentWeather = ({ currentPosition, selectedTempUnitName }: useGetCurrentWeather) => {
+
+    const { lat, lon, locationName } = currentPosition[0]
+    let unit = selectedTempUnitName;
+
+
+    const queryUnit = `&units=${unit}`;
+    // console.log('unit: ', unit)
+    // console.log('queryUnit: ', queryUnit)
+
 
     const APINAME = 'weather'
     let APIURL = ''
@@ -19,6 +32,8 @@ export const useGetCurrentWeather = (currentPosition: CurrentPosition) => {
         const queryLocation = `?q=${locationName}`;
         APIURL = `${BASEURL}/${APINAME}${queryLocation}${queryUnit}${appID}`
     }
+
+    // console.log(APIURL)
 
     return useQuery({
         queryKey: [APINAME],
