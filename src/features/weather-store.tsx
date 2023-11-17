@@ -1,20 +1,27 @@
 import { atom } from "jotai";
 import { RESET } from "jotai/utils";
-import { coordinatesAtom, localityAtom, searchTermAtom } from "./weather-initialstate";
+import { currentPositionAtom, searchTermAtom } from "./weather-initialstate";
 
 
 
-export const searchLocalityAtom = atom(
+export const searchLocationAtom = atom(
     null,
     (_, set, searchTerm: string) => {
-        set(localityAtom, searchLocality(searchTerm))
+        set(currentPositionAtom, saveLocationName(searchTerm))
         set(searchTermAtom, '')
     }
 )
 
-export const searchLocality = (locality: string) => {
+export const saveLocationName = (locationName: string) => {
+    const lat = null
+    const lon = null
+
     return [
-        { locality }
+        {
+            lat,
+            lon,
+            locationName
+        }
     ]
 }
 
@@ -22,20 +29,23 @@ export const searchLocality = (locality: string) => {
 const saveCoordinates = (position: GeolocationPosition) => {
     const lat = position?.coords.latitude;
     const lon = position?.coords.longitude;
+    const locationName = null
 
     return [
         {
             lat,
-            lon
+            lon,
+            locationName
         }
     ]
+
 }
 
 
 export const getCoordinatesAtom = atom(
     null,
     (_, set, position: GeolocationPosition) => {
-        set(coordinatesAtom, saveCoordinates(position))
+        set(currentPositionAtom, saveCoordinates(position))
     }
 )
 
@@ -43,8 +53,7 @@ export const getCoordinatesAtom = atom(
 export const clearCoordinatesAtom = atom(
     null,
     (_, set) => {
-        set(coordinatesAtom, RESET)
-        set(localityAtom, RESET)
+        set(currentPositionAtom, RESET)
     }
 )
 

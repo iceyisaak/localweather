@@ -1,9 +1,8 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { CurrentPosition, SearchLocation } from "../types/location";
+import { CurrentPosition } from "../types/location";
 
 
 
-export const coordinatesAtom = atomWithStorage<CurrentPosition[]>('geolocation', [])
+export const currentPositionAtom = atomWithStorage<CurrentPosition[]>('weather-location', [])
 export const searchTermAtom = atom('')
-export const localityAtom = atomWithStorage<SearchLocation[]>('geolocation', [])

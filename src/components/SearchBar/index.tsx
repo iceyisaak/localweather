@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent } from "react";
 import { MdMyLocation } from 'react-icons/md';
 
 import { useAtom } from "jotai";
-import { getCoordinatesAtom, searchLocalityAtom } from "../../features/weather-store";
+import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 import style from './searchbar.module.scss';
 import { searchTermAtom } from "../../features/weather-initialstate";
 
@@ -12,13 +12,13 @@ const SearchBar = () => {
 
     const [searchTerm, setSearchTerm] = useAtom(searchTermAtom);
     const [, getCoordinates] = useAtom(getCoordinatesAtom)
-    const [, setSearchLocality] = useAtom(searchLocalityAtom)
+    const [, setSearchLocation] = useAtom(searchLocationAtom)
 
 
-    const searchLocalityHandler = (e: FormEvent) => {
+    const searchLocationHandler = (e: FormEvent) => {
         e.preventDefault();
         if (searchTerm === '') return
-        setSearchLocality(searchTerm)
+        setSearchLocation(searchTerm)
         setSearchTerm('');
     };
 
@@ -42,7 +42,7 @@ const SearchBar = () => {
 
     return (
         <form
-            onSubmit={searchLocalityHandler}
+            onSubmit={searchLocationHandler}
             className={`${style['form']}`}
         >
             <div className={`${style['form-content']}`}>

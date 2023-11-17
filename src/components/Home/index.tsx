@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { coordinatesAtom, localityAtom } from '../../features/weather-initialstate';
+import { currentPositionAtom } from '../../features/weather-initialstate';
 import SearchBar from '../SearchBar';
 import WeatherDisplay from '../WeatherDisplay';
 
@@ -8,8 +8,11 @@ import style from './home.module.scss';
 
 const Home = () => {
 
-    const [coordinates] = useAtom(coordinatesAtom)
-    const [locality] = useAtom(localityAtom)
+    const [coordinates] = useAtom(currentPositionAtom)
+    // const [locality] = useAtom(localityAtom)
+
+    console.log('coords-home: ', coordinates)
+    // console.log('locality-home: ', locality)
 
 
     return (
@@ -18,7 +21,7 @@ const Home = () => {
                 <header className={`${style['header']}`}>LocalWeather</header>
                 <div className={`${style['container']}`}>
                     {
-                        coordinates.length < 1 && locality.length < 1 ?
+                        coordinates.length < 1 ?
                             <SearchBar /> :
                             <WeatherDisplay />
                     }
