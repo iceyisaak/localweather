@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { RESET } from "jotai/utils";
 import { TemperatureUnit } from "../types/temperature-unit";
-import { currentPositionAtom, searchTermAtom, temperatureUnitAtom } from "./weather-initialstate";
+import { currentPositionAtom, searchTermAtom, tempUnitIDAtom, temperatureUnitAtom } from "./weather-initialstate";
 
 
 
@@ -35,15 +35,15 @@ const saveCoordinates = (position: GeolocationPosition) => {
     ]
 }
 
-const setDefaultTemperatureUnit = () => {
-    return [
-        {
-            id: 0,
-            name: 'metric',
-            symbol: 'C'
-        }
-    ]
-}
+// const setDefaultTemperatureUnit = () => {
+//     return [
+//         {
+//             id: 0,
+//             name: 'metric',
+//             symbol: 'C'
+//         }
+//     ]
+// }
 
 
 const setTemperatureUnit = (tempUnit: TemperatureUnit) => {
@@ -60,14 +60,25 @@ const setTemperatureUnit = (tempUnit: TemperatureUnit) => {
     ]
 }
 
+const setTemperatureUnitID = (id: number) => {
+    return id
+}
 
 
+// export const setDefaultTemperatureUnitAtom = atom(
+//     null,
+//     (_, set) => {
+//         console.log('tempUnit-0: ')
+//         set(temperatureUnitAtom, setDefaultTemperatureUnit())
+//     }
+// )
 
 export const setTemperatureUnitAtom = atom(
     null,
-    (_, set, tempUnit: TemperatureUnit) => {
+    (_, set, tempUnit: TemperatureUnit, id: number) => {
         console.log('tempUnit-2: ', tempUnit)
         set(temperatureUnitAtom, setTemperatureUnit(tempUnit))
+        set(tempUnitIDAtom, setTemperatureUnitID(id))
     }
 )
 
@@ -93,6 +104,7 @@ export const clearCoordinatesAtom = atom(
     (_, set) => {
         set(currentPositionAtom, RESET)
         set(temperatureUnitAtom, RESET)
+        // set(tempUnitIDAtom, RESET)
     }
 )
 
