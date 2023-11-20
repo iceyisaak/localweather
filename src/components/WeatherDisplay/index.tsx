@@ -39,7 +39,11 @@ const WeatherDisplay = () => {
 
     const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
     const selectedTempUnitName = tempU[tempUnitID] && tempU[tempUnitID].name
+
+    // This logs the state correctly everytime
     console.log('selectedTempUnitName: ', selectedTempUnitName)
+
+
     const { data: weatherData, refetch } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
 
 
@@ -77,7 +81,11 @@ const WeatherDisplay = () => {
             />
             <h1 className={`${style['temperature']}`}>
                 <span onClick={setTemperatureUnitHandler}>
+
+                    {/* This shows old state after a page reload: (State persisted, but delayed by 1 step) */}
                     {weatherData?.main && Math.round(weatherData?.main.temp)}
+
+                    {/* This always renders correctly */}
                     °{tempU[tempUnitID].symbol}
                 </span>
             </h1>
