@@ -1,14 +1,24 @@
 import { useAtom } from 'jotai';
-import { currentPositionAtom } from '../../features/weather-initialstate';
+import { currentPositionAtom, tempUnitIDAtom } from '../../features/weather-initialstate';
 import SearchBar from '../SearchBar';
 import WeatherDisplay from '../WeatherDisplay';
 
 import style from './home.module.scss';
+import { useEffect } from 'react';
 
 
 const Home = () => {
 
     const [currentPosition] = useAtom(currentPositionAtom)
+    const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
+
+
+    useEffect(() => {
+        if (tempUnitID) {
+            setTempUnitID(tempUnitID)
+        }
+    }, [tempUnitID])
+
 
     return (
         <>

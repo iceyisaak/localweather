@@ -13,15 +13,6 @@ const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useAtom(searchTermAtom);
     const [, getCoordinates] = useAtom(getCoordinatesAtom)
     const [, setSearchLocation] = useAtom(searchLocationAtom)
-    const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
-
-    useEffect(() => {
-        if (tempUnitID) {
-            setTempUnitID(tempUnitID)
-            console.log('tempUnitID-front: ', tempUnitID)
-        }
-    }, [tempUnitID])
-
 
 
     const searchLocationHandler = (e: FormEvent) => {
