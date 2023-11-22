@@ -4,7 +4,7 @@ export const SearchSuggestionMenu = () => {
     return (
         <article>
             <p>
-                Search Suggestions
+                Search Suggestion Menu
             </p>
         </article>
     )

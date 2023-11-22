@@ -4,6 +4,7 @@ import { searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 
 import { MdMyLocation } from 'react-icons/md';
+import { SearchSuggestionMenu } from "./search-suggestion-menu";
 import style from './searchbar.module.scss';
 
 
@@ -64,9 +65,15 @@ export const WeatherSearch = () => {
                         />
                     </span>
                 </div>
+                {
+                    <SearchSuggestionMenu />
+                }
                 <button className={`${style['btn']} ${'pointer'}`}>
                     Check Weather
                 </button>
+                {
+                    //Error.Msg
+                }
             </div>
         </form >
     );

@@ -26,8 +26,6 @@ const saveCoordinates = (position: GeolocationPosition) => {
     const lon = position?.coords.longitude;
     const locationName = null
 
-
-
     return [
         {
             lat,
@@ -36,16 +34,6 @@ const saveCoordinates = (position: GeolocationPosition) => {
         }
     ]
 }
-
-// const setDefaultTemperatureUnit = () => {
-//     return [
-//         {
-//             id: 0,
-//             name: 'metric',
-//             symbol: 'C'
-//         }
-//     ]
-// }
 
 
 const setTemperatureUnit = (tempUnit: TemperatureUnit) => {
@@ -67,14 +55,6 @@ const setTemperatureUnitID = (id: number) => {
 }
 
 
-// export const setDefaultTemperatureUnitAtom = atom(
-//     null,
-//     (_, set) => {
-//         console.log('tempUnit-0: ')
-//         set(temperatureUnitAtom, setDefaultTemperatureUnit())
-//     }
-// )
-
 export const setTemperatureUnitAtom = atom(
     null,
     (_, set, tempUnit: TemperatureUnit, id: number) => {
@@ -94,14 +74,9 @@ export const searchLocationAtom = atom(
 )
 
 export const getCoordinatesAtom = atom(
-    // (get)=> get(tempUnitIDAtom),
     null,
     (_, set, position: GeolocationPosition) => {
         set(currentPositionAtom, saveCoordinates(position))
-        // if (!get(tempUnitID)) {
-        //     console.log('tempUnitIDAtom: ', tempUnitIDAtom)
-        //     setTemperatureUnitID(0)
-        // }
     }
 )
 
@@ -110,8 +85,6 @@ export const clearCoordinatesAtom = atom(
     null,
     (_, set) => {
         set(currentPositionAtom, RESET)
-        set(temperatureUnitAtom, RESET)
-        // set(tempUnitIDAtom, RESET)
     }
 )
 
