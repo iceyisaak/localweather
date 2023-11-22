@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 import { currentPositionAtom, tempUnitIDAtom } from '../../features/weather-initialstate';
-import { WeatherSearch } from '../weather-search';
+import { WeatherSearch } from '../weather-search/weather-search';
 import { WeatherDisplay } from '../weather-display';
 
 import style from './home.module.scss';

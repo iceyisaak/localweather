@@ -18,12 +18,8 @@ export const WeatherDisplay = () => {
 
     const [currentPosition] = useAtom(currentPositionAtom)
     const [, clearCoordinates] = useAtom(clearCoordinatesAtom)
-
-
     const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
     const selectedTempUnitName = tempU[tempUnitID].name
-
-    console.log('tempUnitID: ', tempUnitID)
 
     const { data: weatherData, refetch: refetchWeatherData } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
 
@@ -45,7 +41,6 @@ export const WeatherDisplay = () => {
 
     return (
         <div className={`${style['WeatherDisplay']}`}>
-
             <div className={`${style['location']} ${style['location-name']}`}>
                 <h3>
                     <IoLocationOutline />
