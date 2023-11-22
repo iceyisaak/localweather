@@ -16,8 +16,8 @@ const SearchBar = () => {
     const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
 
     useEffect(() => {
-        if (!tempUnitID) {
-            setTempUnitID(0)
+        if (tempUnitID) {
+            setTempUnitID(tempUnitID)
         }
     }, [tempUnitID])
 
