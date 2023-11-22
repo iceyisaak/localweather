@@ -18,8 +18,7 @@ const SearchBar = () => {
     useEffect(() => {
         if (tempUnitID) {
             setTempUnitID(tempUnitID)
-        } else {
-            setTempUnitID(0)
+            console.log('tempUnitID-front: ', tempUnitID)
         }
     }, [tempUnitID])
 
