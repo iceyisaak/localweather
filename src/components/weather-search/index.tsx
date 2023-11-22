@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
-import { ChangeEvent, FormEvent, useEffect } from "react";
-import { searchTermAtom, tempUnitIDAtom } from "../../features/weather-initialstate";
+import { ChangeEvent, FormEvent } from "react";
+import { searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 
 import { MdMyLocation } from 'react-icons/md';
@@ -8,7 +8,7 @@ import style from './searchbar.module.scss';
 
 
 
-const SearchBar = () => {
+export const WeatherSearch = () => {
 
     const [searchTerm, setSearchTerm] = useAtom(searchTermAtom);
     const [, getCoordinates] = useAtom(getCoordinatesAtom)
@@ -71,5 +71,3 @@ const SearchBar = () => {
         </form >
     );
 };
-
-export default SearchBar;

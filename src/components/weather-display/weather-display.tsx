@@ -13,7 +13,7 @@ import style from './weatherdisplay.module.scss';
 
 
 
-const WeatherDisplay = () => {
+export const WeatherDisplay = () => {
 
 
     const [currentPosition] = useAtom(currentPositionAtom)
@@ -70,5 +70,3 @@ const WeatherDisplay = () => {
         </div>
     );
 };
-
-export default WeatherDisplay;

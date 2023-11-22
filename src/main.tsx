@@ -1,7 +1,7 @@
 import { Provider } from 'jotai';
 import React from 'react';
 import { createRoot } from "react-dom/client";
-import Home from '../src/components/Home';
+import { Home } from './components/home';
 
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
