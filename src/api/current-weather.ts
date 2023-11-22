@@ -16,24 +16,19 @@ export const useGetCurrentWeather = ({ currentPosition, selectedTempUnitName }: 
     const { lat, lon, locationName } = currentPosition[0]
     let unit = selectedTempUnitName;
 
-
     const queryUnit = `&units=${unit}`;
-    // console.log('unit: ', unit)
-    // console.log('queryUnit: ', queryUnit)
-
-
     const APINAME = 'weather'
+    const DATA_ENDPOINT = 'data/2.5'
+
     let APIURL = ''
 
     if (!locationName) {
         const geolocation = `?lat=${lat}&lon=${lon}`
-        APIURL = `${BASEURL}/${APINAME}${geolocation}${queryUnit}${appID}`
+        APIURL = `${BASEURL}/${DATA_ENDPOINT}/${APINAME}${geolocation}${queryUnit}${appID}`
     } else {
         const queryLocation = `?q=${locationName}`;
-        APIURL = `${BASEURL}/${APINAME}${queryLocation}${queryUnit}${appID}`
+        APIURL = `${BASEURL}/${DATA_ENDPOINT}/${APINAME}${queryLocation}${queryUnit}${appID}`
     }
-
-    // console.log(APIURL)
 
     return useQuery({
         queryKey: [APINAME],
@@ -44,5 +39,29 @@ export const useGetCurrentWeather = ({ currentPosition, selectedTempUnitName }: 
         }
     })
 
+}
+
+
+
+type useGetDirectGeoCode = {
+    locationName: string
+}
+
+export const useGetDirectGeoCode = ({ locationName }: useGetDirectGeoCode) => {
+
+    const APINAME = 'geo-direct'
+    const API_GEOENDPOINT = 'geo/1.0/direct'
+    const queryLocation = `?q=${locationName}`
+    const APIURL = `${BASEURL}/${API_GEOENDPOINT}${queryLocation}${appID}`
+
+
+    return useQuery({
+        queryKey: [APINAME],
+        queryFn: async () => {
+            const response = await axios.get(APIURL)
+            const data: unknown = response.data
+            return data as CurrentWeather
+        }
+    })
 }
 
