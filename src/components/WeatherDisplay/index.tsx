@@ -4,30 +4,13 @@ import { IMAGEURL } from '../../api';
 import { useGetCurrentWeather } from '../../api/current-weather';
 import { currentPositionAtom, tempUnitIDAtom } from '../../features/weather-initialstate';
 import { clearCoordinatesAtom } from '../../features/weather-store';
+import tempU from '../../tempU.json'
+
 
 import { IoLocationOutline } from 'react-icons/io5';
 import { RiCloseCircleLine } from "react-icons/ri";
 import style from './weatherdisplay.module.scss';
 
-
-
-const tempU = [
-    {
-        id: 0,
-        name: 'metric',
-        symbol: 'C'
-    },
-    {
-        id: 1,
-        name: 'imperial',
-        symbol: 'F'
-    },
-    {
-        id: 2,
-        name: 'standard',
-        symbol: 'K'
-    },
-]
 
 
 const WeatherDisplay = () => {
@@ -64,6 +47,7 @@ const WeatherDisplay = () => {
 
     return (
         <div className={`${style['WeatherDisplay']}`}>
+
             <div className={`${style['location']} ${style['location-name']}`}>
                 <h3>
                     <IoLocationOutline />

@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "name": "metric",
+        "symbol": "C"
+    },
+    {
+        "id": 1,
+        "name": "imperial",
+        "symbol": "F"
+    },
+    {
+        "id": 2,
+        "name": "standard",
+        "symbol": "K"
+    }
+]
