@@ -26,6 +26,8 @@ const saveCoordinates = (position: GeolocationPosition) => {
     const lon = position?.coords.longitude;
     const locationName = null
 
+
+
     return [
         {
             lat,
@@ -92,9 +94,14 @@ export const searchLocationAtom = atom(
 )
 
 export const getCoordinatesAtom = atom(
+    // (get)=> get(tempUnitIDAtom),
     null,
     (_, set, position: GeolocationPosition) => {
         set(currentPositionAtom, saveCoordinates(position))
+        // if (!get(tempUnitID)) {
+        //     console.log('tempUnitIDAtom: ', tempUnitIDAtom)
+        //     setTemperatureUnitID(0)
+        // }
     }
 )
 

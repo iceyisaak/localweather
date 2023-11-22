@@ -4,7 +4,7 @@ import { IMAGEURL } from '../../api';
 import { useGetCurrentWeather } from '../../api/current-weather';
 import { currentPositionAtom, tempUnitIDAtom } from '../../features/weather-initialstate';
 import { clearCoordinatesAtom } from '../../features/weather-store';
-import tempU from '../../tempU.json'
+import tempU from '../../tempU.json';
 
 
 import { IoLocationOutline } from 'react-icons/io5';
@@ -21,13 +21,16 @@ const WeatherDisplay = () => {
 
 
     const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
-    const selectedTempUnitName = tempU[tempUnitID] && tempU[tempUnitID].name
+    // const selectedTempUnitName = tempU[tempUnitID] && tempU[tempUnitID].name
+    const selectedTempUnitName = tempU[tempUnitID].name
+
 
     // This logs the state correctly everytime
-    console.log('selectedTempUnitName: ', selectedTempUnitName)
+    // console.log('tempUnitID ', tempUnitID)
+    // console.log('selectedTempUnitName: ', selectedTempUnitName)
 
 
-    const { data: weatherData, refetch } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
+    const { data: weatherData, refetch: refetchWeatherData } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
 
 
     const setTemperatureUnitHandler = async () => {
@@ -37,7 +40,7 @@ const WeatherDisplay = () => {
             }
         )
         await Promise.resolve()
-        await refetch()
+        await refetchWeatherData()
     }
 
 
