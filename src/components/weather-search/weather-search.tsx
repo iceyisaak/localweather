@@ -47,7 +47,7 @@ export const WeatherSearch = () => {
         >
             <div className={`${style['form-content']}`}>
                 <label htmlFor='search' className={`${style['label']}`}>
-                    Search City
+                    Location Name
                 </label>
                 <div className={`${style['location-input']}`}>
                     <input
@@ -61,6 +61,7 @@ export const WeatherSearch = () => {
                     <span>
                         <MdMyLocation
                             onClick={getCoordinatesHandler}
+                            title='Get Location Coordinates'
                             className={`${'pointer'} ${style['locator']}`}
                         />
                     </span>
@@ -71,10 +72,10 @@ export const WeatherSearch = () => {
                 <button className={`${style['btn']} ${'pointer'}`}>
                     Check Weather
                 </button>
-                {
-                    //Error.Msg
-                }
             </div>
+            {
+                //Error.Msg
+            }
         </form >
     );
 };
