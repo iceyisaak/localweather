@@ -1,12 +1,11 @@
 import { useAtom } from "jotai";
-import { ChangeEvent, FormEvent, MouseEvent, useEffect, useRef } from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useRef } from "react";
 import { errorMessageAtom, inputFocusAtom, isErrorAtom, searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 
 import { MdMyLocation } from 'react-icons/md';
 import { useGetDirectGeoCode } from "../../api/current-weather";
 import style from './searchbar.module.scss';
-import { render } from "react-dom";
 
 
 
@@ -22,14 +21,7 @@ export const WeatherSearch = () => {
 
     const { data: searchResultsData } = useGetDirectGeoCode(searchTerm)
 
-    console.log('data-UI: ', searchResultsData)
 
-    // useEffect(()=>{
-    //     // showErrorMessage()
-
-
-
-    // },[isError])
 
     const showErrorMessage = (message: string) => {
 
@@ -75,13 +67,19 @@ export const WeatherSearch = () => {
     }
 
     const selectLocationHandler = (e: MouseEvent<HTMLParagraphElement>) => {
-        const locationName = (e.target as HTMLInputElement).childNodes[0].nodeValue
-        const locationState = (e.target as HTMLInputElement).childNodes[1].nodeValue
-        const locationCountry = (e.target as HTMLInputElement).childNodes[3].nodeValue
+        // e.preventDefault()
+        const keyword0 = (e.target as HTMLInputElement)?.childNodes[0]?.nodeValue
+        const keyword1 = (e.target as HTMLInputElement)?.childNodes[1]?.nodeValue
+        // const keyword2 = (e.target as HTMLInputElement)?.childNodes[2]?.nodeValue
+        const keyword3 = (e.target as HTMLInputElement)?.childNodes[3]?.nodeValue
+        // const keyword4 = (e.target as HTMLInputElement)?.childNodes[4]?.nodeValue
+
+        const locationName = keyword0
+        const locationState = keyword1
+        const locationCountry = keyword3
 
         const selectedLocation = `${locationName}${locationState}, ${locationCountry}`
         setSearchLocation(selectedLocation)
-        // console.log('selectedLocation: ', selectedLocation)
     }
 
 
@@ -106,7 +104,6 @@ export const WeatherSearch = () => {
                         value={searchTerm}
                         className={`${style['input']}`}
                     />
-
                     <span>
                         <MdMyLocation
                             onClick={getCoordinatesHandler}
@@ -129,7 +126,9 @@ export const WeatherSearch = () => {
                                         >
                                             <p onMouseDown={selectLocationHandler}>
                                                 {searchResult.name}{
-                                                    searchResult.state ? `, ${searchResult.state}` : ''
+                                                    searchResult.state !== undefined
+                                                        ? `, ${searchResult.state}`
+                                                        : null
                                                 }: {searchResult.country}
                                             </p>
                                         </div>
@@ -137,7 +136,6 @@ export const WeatherSearch = () => {
                                 )
                             }
                         </article>
-
                         :
                         null
                 }
