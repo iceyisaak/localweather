@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import { ChangeEvent, FormEvent, MouseEvent, useRef } from "react";
-import { errorMessageAtom, inputFocusAtom, isErrorAtom, searchTermAtom } from "../../features/weather-initialstate";
+import { errorMessageAtom, inputFocusAtom, isErrorAtom, isLoadingAtom, searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 
 import { MdMyLocation } from 'react-icons/md';
@@ -15,6 +15,7 @@ export const WeatherSearch = () => {
     const [isInputFocus, setIsInputFocus] = useAtom(inputFocusAtom)
     const [errorMessage, setErrorMessage] = useAtom(errorMessageAtom)
     const [isError, setIsError] = useAtom(isErrorAtom)
+    const [, setIsLoading] = useAtom(isLoadingAtom)
     const [, getCoordinates] = useAtom(getCoordinatesAtom)
     const [, setSearchLocation] = useAtom(searchLocationAtom)
     const inputRef = useRef<HTMLInputElement>(null)
@@ -24,7 +25,6 @@ export const WeatherSearch = () => {
 
 
     const showErrorMessage = (message: string) => {
-
         setErrorMessage(message)
         const renderMessage = setTimeout(() => {
             setIsError(false)
@@ -49,10 +49,10 @@ export const WeatherSearch = () => {
 
 
     const getCoordinatesHandler = () => {
-
-        // setIsLoading(true)
+        setIsLoading(true)
         navigator.geolocation.getCurrentPosition(
             (position) => {
+                setIsLoading(false)
                 getCoordinates(position)
             }
         )
@@ -67,7 +67,6 @@ export const WeatherSearch = () => {
     }
 
     const selectLocationHandler = (e: MouseEvent<HTMLParagraphElement>) => {
-        // e.preventDefault()
         const keyword0 = (e.target as HTMLInputElement)?.childNodes[0]?.nodeValue
         const keyword1 = (e.target as HTMLInputElement)?.childNodes[1]?.nodeValue
         // const keyword2 = (e.target as HTMLInputElement)?.childNodes[2]?.nodeValue

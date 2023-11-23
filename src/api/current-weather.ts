@@ -7,14 +7,14 @@ import { type CurrentPosition } from "../types/location"
 
 
 type useGetCurrentWeather = {
-    currentPosition: CurrentPosition[],
+    currentPosition?: CurrentPosition[],
     selectedTempUnitName?: string
 }
 
 
 export const useGetCurrentWeather = ({ currentPosition, selectedTempUnitName }: useGetCurrentWeather) => {
 
-    const { lat, lon, locationName } = currentPosition[0]
+    const { lat, lon, locationName } = currentPosition![0]
     let unit = selectedTempUnitName;
 
     const queryUnit = `&units=${unit}`;
@@ -41,6 +41,8 @@ export const useGetCurrentWeather = ({ currentPosition, selectedTempUnitName }: 
     })
 
 }
+
+
 
 
 

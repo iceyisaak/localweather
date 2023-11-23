@@ -21,10 +21,8 @@ export const WeatherDisplay = () => {
     const [tempUnitID, setTempUnitID] = useAtom(tempUnitIDAtom)
     const selectedTempUnitName = tempU[tempUnitID].name
 
-    const { data: weatherData, refetch: refetchWeatherData } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
+    const { data: weatherData, refetch: refetchWeatherData, } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
 
-
-    console.log('weatherData: ', weatherData && weatherData)
 
     const setTemperatureUnitHandler = async () => {
         setTempUnitID(
