@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { BASEURL, appID } from "."
 import { CurrentWeather } from "../types/current-weather"
+import { GeoCode } from "../types/geocode"
 import { type CurrentPosition } from "../types/location"
 
 
@@ -47,21 +48,23 @@ type useGetDirectGeoCode = {
     locationName: string
 }
 
-export const useGetDirectGeoCode = ({ locationName }: useGetDirectGeoCode) => {
+export const useGetDirectGeoCode = (locationName: string) => {
 
     const APINAME = 'geo-direct'
     const API_GEOENDPOINT = 'geo/1.0/direct'
     const queryLocation = `?q=${locationName}`
-    const APIURL = `${BASEURL}/${API_GEOENDPOINT}${queryLocation}${appID}`
+    const queryLimit = `&limit=5`
+    const APIURL = `${BASEURL}/${API_GEOENDPOINT}${queryLocation}${queryLimit}${appID}`
 
 
     return useQuery({
-        queryKey: [APINAME],
+        queryKey: [APINAME, locationName],
         queryFn: async () => {
             const response = await axios.get(APIURL)
             const data: unknown = response.data
-            return data as CurrentWeather
-        }
+            return data as GeoCode
+        },
+        enabled: locationName !== undefined && locationName !== ''
     })
 }
 
