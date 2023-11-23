@@ -24,6 +24,8 @@ export const WeatherDisplay = () => {
     const { data: weatherData, refetch: refetchWeatherData } = useGetCurrentWeather({ currentPosition, selectedTempUnitName })
 
 
+    console.log('weatherData: ', weatherData && weatherData)
+
     const setTemperatureUnitHandler = async () => {
         setTempUnitID(
             (prevIndex) => {
@@ -41,27 +43,37 @@ export const WeatherDisplay = () => {
 
     return (
         <div className={`${style['WeatherDisplay']}`}>
-            <div className={`${style['location']} ${style['location-name']}`}>
-                <h3>
-                    <IoLocationOutline />
-                    {' '}{weatherData && weatherData?.name},
-                    {' '}{weatherData && weatherData?.sys?.country} {'    '}
-                </h3>
-                <RiCloseCircleLine onClick={resetLocationHandler} className={`${'pointer'}`} />
-            </div>
-            <p className={`${style['description']}`}>
-                {weatherData?.weather && weatherData?.weather[0].description}
-            </p>
-            <img
-                src={`${IMAGEURL}/${weatherData?.weather && weatherData?.weather[0].icon}@2x.png`}
-                alt={weatherData?.weather && weatherData?.weather[0].main}
-            />
-            <h1 className={`${style['temperature']}`}>
-                <span onClick={setTemperatureUnitHandler}>
-                    {weatherData?.main && Math.round(weatherData?.main.temp)}
-                    °{tempU[tempUnitID].symbol}
-                </span>
-            </h1>
+            {
+                weatherData && weatherData?.cod === 200 ?
+                    <>
+                        <div className={`${style['location']} ${style['location-name']}`}>
+                            <h3>
+                                <IoLocationOutline />
+                                {' '}{weatherData && weatherData?.name},
+                                {' '}{weatherData && weatherData?.sys?.country} {'    '}
+                            </h3>
+                            <RiCloseCircleLine onClick={resetLocationHandler} className={`${'pointer'}`} />
+                        </div>
+                        <p className={`${style['description']}`}>
+                            {weatherData?.weather && weatherData?.weather[0].description}
+                        </p>
+                        <img
+                            src={`${IMAGEURL}/${weatherData?.weather && weatherData?.weather[0].icon}@2x.png`}
+                            alt={weatherData?.weather && weatherData?.weather[0].main}
+                        />
+                        <h1 className={`${style['temperature']}`}>
+                            <span onClick={setTemperatureUnitHandler}>
+                                {weatherData?.main && Math.round(weatherData?.main.temp)}
+                                °{tempU[tempUnitID].symbol}
+                            </span>
+                        </h1>
+                    </>
+                    :
+                    <span className={`${style['location']} ${style['location-name']}`}>
+                        Location Not Found{' '}<RiCloseCircleLine onClick={resetLocationHandler} className={`${'pointer'}`} />
+                    </span>
+            }
+
         </div>
     );
 };
