@@ -8,3 +8,5 @@ export const currentPositionAtom = atomWithStorage<CurrentPosition[]>('weather-l
 export const searchTermAtom = atom('')
 export const tempUnitIDAtom = atomWithStorage('tempUnitID', 0)
 export const inputFocusAtom = atom(false)
+export const errorMessageAtom = atom('')
+export const isErrorAtom = atom(false)

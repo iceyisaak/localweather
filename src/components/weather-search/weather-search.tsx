@@ -1,11 +1,12 @@
 import { useAtom } from "jotai";
-import { ChangeEvent, FormEvent, MouseEvent, useRef } from "react";
-import { inputFocusAtom, searchTermAtom } from "../../features/weather-initialstate";
+import { ChangeEvent, FormEvent, MouseEvent, useEffect, useRef } from "react";
+import { errorMessageAtom, inputFocusAtom, isErrorAtom, searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 
 import { MdMyLocation } from 'react-icons/md';
 import { useGetDirectGeoCode } from "../../api/current-weather";
 import style from './searchbar.module.scss';
+import { render } from "react-dom";
 
 
 
@@ -13,6 +14,8 @@ export const WeatherSearch = () => {
 
     const [searchTerm, setSearchTerm] = useAtom(searchTermAtom);
     const [isInputFocus, setIsInputFocus] = useAtom(inputFocusAtom)
+    const [errorMessage, setErrorMessage] = useAtom(errorMessageAtom)
+    const [isError, setIsError] = useAtom(isErrorAtom)
     const [, getCoordinates] = useAtom(getCoordinatesAtom)
     const [, setSearchLocation] = useAtom(searchLocationAtom)
     const inputRef = useRef<HTMLInputElement>(null)
@@ -21,9 +24,28 @@ export const WeatherSearch = () => {
 
     console.log('data-UI: ', searchResultsData)
 
+    // useEffect(()=>{
+    //     // showErrorMessage()
+
+
+
+    // },[isError])
+
+    const showErrorMessage = (message: string) => {
+
+        setErrorMessage(message)
+        const renderMessage = setTimeout(() => {
+            setIsError(false)
+        }, 3000)
+        return () => clearTimeout(renderMessage)
+    }
+
     const searchLocationHandler = (e: FormEvent) => {
         e.preventDefault();
-        if (searchTerm === '') return
+        if (searchTerm === '') {
+            setIsError(true)
+            return showErrorMessage('Please enter a valid location name.')
+        }
         setSearchLocation(searchTerm)
         setSearchTerm('');
     };
@@ -124,8 +146,9 @@ export const WeatherSearch = () => {
                 </button>
             </div>
             {
-                <p>
-                    { }
+                isError &&
+                <p className={`${style['error-msg']}`}>
+                    {errorMessage}
                 </p>
             }
         </form >
