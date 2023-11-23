@@ -1,11 +1,20 @@
 
+
 export const SearchSuggestionMenu = () => {
 
     return (
         <article>
-            <p>
-                Search Suggestion Menu
-            </p>
+            {
+                // searchResultsData.map(
+                //     (searchResult) => (
+                //         <div key={searchResultsData.indexOf(searchResult)}>
+                //             <p>
+                //                 {searchResult.name}, {searchResult?.state}: {searchResult.country}
+                //             </p>
+                //         </div>
+                //     )
+                // )
+            }
         </article>
     )
 }

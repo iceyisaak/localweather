@@ -5,6 +5,7 @@
 }
 
 .form {
+    position: relative;
     // width: 100%;
     // margin: 2rem 2rem 0;
     // height: 10rem;
@@ -46,4 +47,13 @@
     @include respond(md) {
         width: 50rem;
     }
+}
+
+
+
+.search-suggestion-menu {
+    background-color: #d4e6ef;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
 }

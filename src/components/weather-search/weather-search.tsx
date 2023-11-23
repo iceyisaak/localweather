@@ -1,25 +1,25 @@
 import { useAtom } from "jotai";
-import { ChangeEvent, FormEvent, useRef } from "react";
-import { searchTermAtom } from "../../features/weather-initialstate";
+import { ChangeEvent, FormEvent, MouseEvent, useRef } from "react";
+import { inputFocusAtom, searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
 
 import { MdMyLocation } from 'react-icons/md';
-import { SearchSuggestionMenu } from "./search-suggestion-menu";
-import style from './searchbar.module.scss';
 import { useGetDirectGeoCode } from "../../api/current-weather";
+import style from './searchbar.module.scss';
 
 
 
 export const WeatherSearch = () => {
 
     const [searchTerm, setSearchTerm] = useAtom(searchTermAtom);
+    const [isInputFocus, setIsInputFocus] = useAtom(inputFocusAtom)
     const [, getCoordinates] = useAtom(getCoordinatesAtom)
     const [, setSearchLocation] = useAtom(searchLocationAtom)
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const { data } = useGetDirectGeoCode(searchTerm)
+    const { data: searchResultsData } = useGetDirectGeoCode(searchTerm)
 
-    console.log('data-UI: ', data)
+    console.log('data-UI: ', searchResultsData)
 
     const searchLocationHandler = (e: FormEvent) => {
         e.preventDefault();
@@ -30,7 +30,6 @@ export const WeatherSearch = () => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const location = e.target.value;
-        console.log('onChangeHandler(): ', location)
         setSearchTerm(location);
     };
 
@@ -46,11 +45,21 @@ export const WeatherSearch = () => {
     }
 
     const onFocusHanlder = () => {
-        console.log('onFocusHandler()')
+        setIsInputFocus(true)
     }
 
     const onBlurHandler = () => {
-        console.log('onBlurHandler()')
+        setIsInputFocus(false)
+    }
+
+    const selectLocationHandler = (e: MouseEvent<HTMLParagraphElement>) => {
+        const locationName = (e.target as HTMLInputElement).childNodes[0].nodeValue
+        const locationState = (e.target as HTMLInputElement).childNodes[1].nodeValue
+        const locationCountry = (e.target as HTMLInputElement).childNodes[3].nodeValue
+
+        const selectedLocation = `${locationName}${locationState}, ${locationCountry}`
+        setSearchLocation(selectedLocation)
+        // console.log('selectedLocation: ', selectedLocation)
     }
 
 
@@ -75,6 +84,7 @@ export const WeatherSearch = () => {
                         value={searchTerm}
                         className={`${style['input']}`}
                     />
+
                     <span>
                         <MdMyLocation
                             onClick={getCoordinatesHandler}
@@ -84,14 +94,39 @@ export const WeatherSearch = () => {
                     </span>
                 </div>
                 {
-                    <SearchSuggestionMenu />
+                    searchTerm !== '' &&
+                        isInputFocus &&
+                        searchResultsData ?
+
+                        <article className={`${style['search-suggestion-menu']}`}>
+                            {
+                                searchResultsData.map(
+                                    (searchResult) => (
+                                        <div
+                                            key={searchResultsData.indexOf(searchResult)}
+                                        >
+                                            <p onMouseDown={selectLocationHandler}>
+                                                {searchResult.name}{
+                                                    searchResult.state ? `, ${searchResult.state}` : ''
+                                                }: {searchResult.country}
+                                            </p>
+                                        </div>
+                                    )
+                                )
+                            }
+                        </article>
+
+                        :
+                        null
                 }
                 <button className={`${style['btn']} ${'pointer'}`}>
                     Check Weather
                 </button>
             </div>
             {
-                //Error.Msg
+                <p>
+                    { }
+                </p>
             }
         </form >
     );

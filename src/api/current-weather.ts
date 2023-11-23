@@ -56,6 +56,7 @@ export const useGetDirectGeoCode = (locationName: string) => {
     const queryLimit = `&limit=5`
     const APIURL = `${BASEURL}/${API_GEOENDPOINT}${queryLocation}${queryLimit}${appID}`
 
+    console.log('locationName: ', locationName)
 
     return useQuery({
         queryKey: [APINAME, locationName],
