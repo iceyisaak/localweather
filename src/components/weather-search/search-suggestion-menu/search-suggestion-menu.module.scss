@@ -1,0 +1,8 @@
+@import '../../../styles/abstract/mixins';
+
+.search-suggestion-menu {
+    background-color: #d4e6ef;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+}

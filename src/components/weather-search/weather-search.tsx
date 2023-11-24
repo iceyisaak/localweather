@@ -6,6 +6,7 @@ import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-s
 import { MdMyLocation } from 'react-icons/md';
 import { useGetDirectGeoCode } from "../../api/current-weather";
 import style from './searchbar.module.scss';
+import { SearchSuggestionMenu } from "./search-suggestion-menu";
 
 
 
@@ -66,20 +67,20 @@ export const WeatherSearch = () => {
         setIsInputFocus(false)
     }
 
-    const selectLocationHandler = (e: MouseEvent<HTMLParagraphElement>) => {
-        const keyword0 = (e.target as HTMLInputElement)?.childNodes[0]?.nodeValue
-        const keyword1 = (e.target as HTMLInputElement)?.childNodes[1]?.nodeValue
-        // const keyword2 = (e.target as HTMLInputElement)?.childNodes[2]?.nodeValue
-        const keyword3 = (e.target as HTMLInputElement)?.childNodes[3]?.nodeValue
-        // const keyword4 = (e.target as HTMLInputElement)?.childNodes[4]?.nodeValue
+    // const selectLocationHandler = (e: MouseEvent<HTMLParagraphElement>) => {
+    //     const keyword0 = (e.target as HTMLInputElement)?.childNodes[0]?.nodeValue
+    //     const keyword1 = (e.target as HTMLInputElement)?.childNodes[1]?.nodeValue
+    //     // const keyword2 = (e.target as HTMLInputElement)?.childNodes[2]?.nodeValue
+    //     const keyword3 = (e.target as HTMLInputElement)?.childNodes[3]?.nodeValue
+    //     // const keyword4 = (e.target as HTMLInputElement)?.childNodes[4]?.nodeValue
 
-        const locationName = keyword0
-        const locationState = keyword1
-        const locationCountry = keyword3
+    //     const locationName = keyword0
+    //     const locationState = keyword1
+    //     const locationCountry = keyword3
 
-        const selectedLocation = `${locationName}${locationState}, ${locationCountry}`
-        setSearchLocation(selectedLocation)
-    }
+    //     const selectedLocation = `${locationName}${locationState}, ${locationCountry}`
+    //     setSearchLocation(selectedLocation)
+    // }
 
 
     return (
@@ -116,25 +117,28 @@ export const WeatherSearch = () => {
                         isInputFocus &&
                         searchResultsData ?
 
-                        <article className={`${style['search-suggestion-menu']}`}>
-                            {
-                                searchResultsData.map(
-                                    (searchResult) => (
-                                        <div
-                                            key={searchResultsData.indexOf(searchResult)}
-                                        >
-                                            <p onMouseDown={selectLocationHandler}>
-                                                {searchResult.name}{
-                                                    searchResult.state !== undefined
-                                                        ? `, ${searchResult.state}`
-                                                        : null
-                                                }: {searchResult.country}
-                                            </p>
-                                        </div>
-                                    )
-                                )
-                            }
-                        </article>
+                        <SearchSuggestionMenu
+                            data={searchResultsData}
+                        />
+                        // <article className={`${style['search-suggestion-menu']}`}>
+                        //     {
+                        //         searchResultsData.map(
+                        //             (searchResult) => (
+                        //                 <div
+                        //                     key={searchResultsData.indexOf(searchResult)}
+                        //                 >
+                        //                     <p onMouseDown={selectLocationHandler}>
+                        //                         {searchResult.name}{
+                        //                             searchResult.state !== undefined
+                        //                                 ? `, ${searchResult.state}`
+                        //                                 : null
+                        //                         }: {searchResult.country}
+                        //                     </p>
+                        //                 </div>
+                        //             )
+                        //         )
+                        //     }
+                        // </article>
                         :
                         null
                 }
