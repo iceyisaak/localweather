@@ -1,12 +1,11 @@
 @import '../../../styles/abstract/mixins';
 
 .input {
-    width: 73vw;
-    height: 3rem;
-    margin-right: 1rem;
+    height: 3.5rem;
     padding-left: 0.5rem;
+    font-size: 1.75rem;
 
     @include respond(md) {
-        width: 50rem;
+        width: 95%
     }
 }

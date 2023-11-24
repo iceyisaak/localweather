@@ -6,6 +6,10 @@
 
 .form {
     position: relative;
+
+    &-content {
+        width: 80vw;
+    }
 }
 
 .location-input {
@@ -15,6 +19,7 @@
 
 .locator {
     font-size: 3rem;
+    margin: 0 0.5rem;
 }
 
 .error-msg {
@@ -23,13 +28,18 @@
 }
 
 .btn {
-    width: 73vw;
-    height: 3rem;
+    width: 80vw;
+    height: 3.5rem;
     color: #ced9df;
     background: #1292d6;
     border: none;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    font-weight: 700;
+
 
     @include respond(md) {
-        width: 50rem;
+        // width: 50rem;
     }
 }

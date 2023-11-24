@@ -3,6 +3,21 @@
 .search-suggestion-menu {
     background-color: #d4e6ef;
     width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
     position: absolute;
     z-index: 10;
+
+
+    .suggestion-selection {
+        padding: 0.3rem;
+
+        &:hover {
+            background-color: #cbd7fc;
+        }
+    }
+
+    .suggestion-text {
+        font-size: 2rem;
+    }
 }

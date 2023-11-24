@@ -74,6 +74,7 @@ export const WeatherSearch = () => {
                         />
                     </span>
                 </div>
+
                 {
                     searchTerm !== '' &&
                         isInputFocus &&
@@ -84,6 +85,8 @@ export const WeatherSearch = () => {
                         :
                         null
                 }
+
+
                 <button className={`${style['btn']} ${'pointer'}`}>
                     Check Weather
                 </button>

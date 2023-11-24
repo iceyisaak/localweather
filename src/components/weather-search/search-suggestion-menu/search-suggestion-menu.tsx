@@ -39,8 +39,9 @@ export const SearchSuggestionMenu = ({ data: searchResultsData }: SearchSuggesti
                     (searchResult) => (
                         <div
                             key={searchResultsData.indexOf(searchResult)}
+                            className={`${style['suggestion-selection']}`}
                         >
-                            <p onMouseDown={selectLocationHandler}>
+                            <p onMouseDown={selectLocationHandler} className={`${style['suggestion-text']} ${'pointer'}`}>
                                 {searchResult.name}{
                                     searchResult.state !== undefined
                                         ? `, ${searchResult.state}`
