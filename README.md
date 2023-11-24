@@ -26,8 +26,8 @@ VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ## Sources, Technologies, and Dependencies
 
 ### Sources
-[Favicon](https://www.svgrepo.com/svg/530233/weather)
-[LoaderIcon](https://gifer.com/en/ZZ5H)
+- [Favicon](https://www.svgrepo.com/svg/530233/weather)
+- [LoaderIcon](https://gifer.com/en/ZZ5H)
 
 ### APIs
 - [OpenWheatherMap API](https://openweathermap.org/)
