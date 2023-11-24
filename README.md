@@ -2,14 +2,22 @@
 ###### variant: Typescript ReactJS + Tanstack Query
 ###### 20231110
 
-## This app
-- Shows current weather of the specified location
+## Project Description
+This app allows you to:
+- Check the current weather of a specific location
+- Change the temperature unit (Celsius, Fahrenheit, Kelvin)
    
 ## Features
 1. Search for current weather data of a specific location
-  - via text search
+  - via text search + Search Suggestion Menu
   - via Geolocation (Coordinates)
-2. Changable temperature unit (Celsius, Fahrenheit, Kelvin)
+2. Changeable temperature unit (Celsius, Fahrenheit, Kelvin)
+3. Resettable location input
+
+## Variants on Different Branches
+- master: The latest variant
+- tanstack-query: Implementation of Tanstack Query (React Query) + Jotai frontend state management
+- context-api: The original variant using ContextAPI
 
 ## How to run this project
 1. Download the repo to your machine
@@ -19,7 +27,7 @@
 VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ```
 4. Run this command in your terminal `npm run dev`
-5.  The terminal shows which port your localhost runs
+5. The terminal shows which port your localhost runs
 6. Enjoy :D
 
 
