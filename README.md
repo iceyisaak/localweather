@@ -3,11 +3,13 @@
 ###### 20231110
 
 ## This app
-1. Shows current weather of the specified location
+- Shows current weather of the specified location
    
 ## Features
-1. Search for location via text input
-2. Search for location via Geolocation input
+1. Search for current weather data of a specific location
+  - via text search
+  - via Geolocation (Coordinates)
+2. Changable temperature unit (Celsius, Fahrenheit, Kelvin)
 
 ## How to run this project
 1. Download the repo to your machine
@@ -16,15 +18,16 @@
 ```
 VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ```
-1. Run this command in your terminal `npm run dev`
-2. The terminal shows which port your localhost runs
-3. Enjoy :D
+4. Run this command in your terminal `npm run dev`
+5.  The terminal shows which port your localhost runs
+6. Enjoy :D
 
 
 ## Sources, Technologies, and Dependencies
 
 ### Sources
 [Favicon](https://www.svgrepo.com/svg/530233/weather)
+[LoaderIcon](https://gifer.com/en/ZZ5H)
 
 ### APIs
 - [OpenWheatherMap API](https://openweathermap.org/)
