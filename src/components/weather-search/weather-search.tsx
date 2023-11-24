@@ -54,6 +54,8 @@ export const WeatherSearch = () => {
         )
     }
 
+    console.log('searchResultsData: ', searchResultsData && searchResultsData.length)
+
 
     return (
         <form
@@ -78,14 +80,14 @@ export const WeatherSearch = () => {
                 {
                     searchTerm !== '' &&
                         isInputFocus &&
-                        searchResultsData ?
+                        searchResultsData &&
+                        searchResultsData!.length > 0 ?
                         <SearchSuggestionMenu
                             data={searchResultsData}
                         />
                         :
                         null
                 }
-
 
                 <button className={`${style['btn']} ${'pointer'}`}>
                     Check Weather
