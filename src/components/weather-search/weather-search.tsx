@@ -54,8 +54,6 @@ export const WeatherSearch = () => {
         )
     }
 
-    console.log('searchResultsData: ', searchResultsData && searchResultsData.length)
-
 
     return (
         <form

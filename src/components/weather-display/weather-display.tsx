@@ -60,7 +60,11 @@ export const WeatherDisplay = () => {
                             alt={weatherData?.weather && weatherData?.weather[0].main}
                         />
                         <h1 className={`${style['temperature']}`}>
-                            <span onClick={setTemperatureUnitHandler}>
+                            <span
+                                onClick={setTemperatureUnitHandler}
+                                className={`${style['temperature-unit']} ${'pointer'}`}
+                                title='Tap to change temperture unit'
+                            >
                                 {weatherData?.main && Math.round(weatherData?.main.temp)}
                                 °{tempU[tempUnitID].symbol}
                             </span>

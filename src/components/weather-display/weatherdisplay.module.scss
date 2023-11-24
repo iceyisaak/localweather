@@ -1,5 +1,5 @@
 .WeatherDisplay {
-    width: 40rem;
+    width: 90vw;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -24,4 +24,5 @@
 .temperature {
     font-size: 5rem;
     color: #fff;
+
 }
