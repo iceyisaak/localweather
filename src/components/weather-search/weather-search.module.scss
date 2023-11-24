@@ -13,16 +13,16 @@
     // justify-content: center;
 }
 
-.input {
-    width: 73vw;
-    height: 3rem;
-    margin-right: 1rem;
-    padding-left: 0.5rem;
+// .input {
+//     width: 73vw;
+//     height: 3rem;
+//     margin-right: 1rem;
+//     padding-left: 0.5rem;
 
-    @include respond(md) {
-        width: 50rem;
-    }
-}
+//     @include respond(md) {
+//         width: 50rem;
+//     }
+// }
 
 .location-input {
     display: flex;
