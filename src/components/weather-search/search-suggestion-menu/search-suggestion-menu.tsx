@@ -32,6 +32,7 @@ export const SearchSuggestionMenu = ({ data: searchResultsData }: SearchSuggesti
     }
 
 
+
     return (
         <article className={`${style['search-suggestion-menu']}`}>
             {

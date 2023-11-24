@@ -24,23 +24,21 @@ export const Home = () => {
 
 
     return (
-        <>
-            <div className={`${style['Home']}`}>
-                <header className={`${style['header']}`}>LocalWeather</header>
-                <div className={`${style['container']}`}>
-                    {
-                        isLoading ?
-                            <img
-                                src={LoaderIcon}
-                                className={`${style['loader-icon']}`}
-                            />
-                            :
-                            currentPosition.length < 1 ?
-                                <WeatherSearch /> :
-                                <WeatherDisplay />
-                    }
-                </div>
+        <div className={`${style['Home']}`}>
+            <header className={`${style['header']}`}>LocalWeather</header>
+            <div className={`${style['container']}`}>
+                {
+                    isLoading ?
+                        <img
+                            src={LoaderIcon}
+                            className={`${style['loader-icon']}`}
+                        />
+                        :
+                        currentPosition.length < 1 ?
+                            <WeatherSearch /> :
+                            <WeatherDisplay />
+                }
             </div>
-        </>
+        </div>
     );
 };

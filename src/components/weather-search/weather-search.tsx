@@ -55,6 +55,7 @@ export const WeatherSearch = () => {
     }
 
 
+
     return (
         <form
             onSubmit={searchLocationHandler}
@@ -74,7 +75,6 @@ export const WeatherSearch = () => {
                         />
                     </span>
                 </div>
-
                 {
                     searchTerm !== '' &&
                         isInputFocus &&

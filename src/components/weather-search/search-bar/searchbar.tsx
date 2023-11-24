@@ -12,7 +12,6 @@ export const SearchBar = () => {
 
 
 
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const location = e.target.value;
         setSearchTerm(location);
