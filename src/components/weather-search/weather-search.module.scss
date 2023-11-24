@@ -8,9 +8,13 @@
     position: relative;
 
     &-content {
-        width: 80vw;
+        width: 90vw;
 
         @include respond(md) {
+            width: 70vw;
+        }
+
+        @include respond(lg) {
             width: 50vw;
         }
     }
