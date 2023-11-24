@@ -1,9 +1,6 @@
-@import '../../../styles/abstract/mixins';
-
 .input {
     height: 3.5rem;
     padding-left: 0.5rem;
     font-size: 1.75rem;
-    width: 95% // @include respond(md) {
-    // }
+    width: 95%
 }
