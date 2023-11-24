@@ -1,9 +1,9 @@
-
+import { useAtom } from 'jotai'
 import { MouseEvent } from 'react'
+import { searchLocationAtom } from '../../../features/weather-store'
+
 import { GeoCode } from '../../../types/geocode'
 import style from './search-suggestion-menu.module.scss'
-import { useAtom } from 'jotai'
-import { searchLocationAtom } from '../../../features/weather-store'
 
 
 type SearchSuggestionMenu = {
@@ -14,7 +14,6 @@ type SearchSuggestionMenu = {
 export const SearchSuggestionMenu = ({ data: searchResultsData }: SearchSuggestionMenu) => {
 
     const [, setSearchLocation] = useAtom(searchLocationAtom)
-
 
 
     const selectLocationHandler = (e: MouseEvent<HTMLParagraphElement>) => {
@@ -31,6 +30,7 @@ export const SearchSuggestionMenu = ({ data: searchResultsData }: SearchSuggesti
         const selectedLocation = `${locationName}${locationState}, ${locationCountry}`
         setSearchLocation(selectedLocation)
     }
+
 
     return (
         <article className={`${style['search-suggestion-menu']}`}>

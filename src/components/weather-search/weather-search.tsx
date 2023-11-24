@@ -1,12 +1,12 @@
 import { useAtom } from "jotai";
 import { FormEvent } from "react";
+import { useGetDirectGeoCode } from "../../api/current-weather";
 import { errorMessageAtom, inputFocusAtom, isErrorAtom, isLoadingAtom, searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
-
-import { MdMyLocation } from 'react-icons/md';
-import { useGetDirectGeoCode } from "../../api/current-weather";
 import { SearchBar } from "./search-bar/searchbar";
 import { SearchSuggestionMenu } from "./search-suggestion-menu";
+
+import { MdMyLocation } from 'react-icons/md';
 import style from './weather-search.module.scss';
 
 
@@ -78,7 +78,6 @@ export const WeatherSearch = () => {
                     searchTerm !== '' &&
                         isInputFocus &&
                         searchResultsData ?
-
                         <SearchSuggestionMenu
                             data={searchResultsData}
                         />
