@@ -3,7 +3,7 @@ import { FormEvent } from "react";
 import { useGetDirectGeoCode } from "../../api/current-weather";
 import { errorMessageAtom, inputFocusAtom, isErrorAtom, isLoadingAtom, searchTermAtom } from "../../features/weather-initialstate";
 import { getCoordinatesAtom, searchLocationAtom } from "../../features/weather-store";
-import { SearchBar } from "./search-bar/searchbar";
+import { SearchBar } from "./search-bar";
 import { SearchSuggestionMenu } from "./search-suggestion-menu";
 
 import { MdMyLocation } from 'react-icons/md';
