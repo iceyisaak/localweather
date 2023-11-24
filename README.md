@@ -1,4 +1,4 @@
-# WeatherApp
+# LocalWeather
 ###### variant: Typescript ReactJS + Tanstack Query
 ###### 20231110
 
