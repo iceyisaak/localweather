@@ -26,21 +26,31 @@ VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ### Sources
 [Favicon](https://www.svgrepo.com/svg/530233/weather)
 
+### APIs
+- [OpenWheatherMap API](https://openweathermap.org/)
+  - [Current Weather API](https://openweathermap.org/current)
+  - [Geocoding API](https://openweathermap.org/api/geocoding-api)
+
 ### Technologies
 - React
 - TypeScript
 - SCSS
 - React Icons
-- React Context API
-- localStorage
+- Axios
+- React Query
+- Jotai
+- localStorage API
 - Geolocation API
 
 ### Dependencies
 ```json
-"dependencies": {
+ "dependencies": {
+    "@tanstack/react-query": "^5.8.3",
+    "axios": "^1.6.1",
+    "jotai": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1"
+    "react-icons": "^4.12.0"
   },
 ```
 
