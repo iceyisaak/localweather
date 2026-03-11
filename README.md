@@ -1,48 +1,61 @@
 # LocalWeather
-###### variant: Typescript ReactJS + Tanstack Query
+
+###### variant: Typescript ReactJS + Tanstack Query + Jotai
+
 ###### 20231110
 
 ## Project Description
+
 This app allows you to:
+
 - Check the current weather of a specific location
 - Change the temperature unit (Celsius, Fahrenheit, Kelvin)
-   
+
 ## Features
+
 1. Search for current weather data of a specific location
-  - via text search + Search Suggestion Menu
-  - via Geolocation (Coordinates)
+
+- via text search + Search Suggestion Menu
+- via Geolocation (Coordinates)
+
 2. Changeable temperature unit (Celsius, Fahrenheit, Kelvin)
 3. Resettable location input
 
 ## Variants on Different Branches
+
 - master: The latest variant
 - tanstack-query: Implementation of Tanstack Query (React Query) + Jotai frontend state management
 - context-api: The original variant using ContextAPI
 
 ## How to run this project
+
 1. Download the repo to your machine
 2. Make sure you have the `APIKEY` generated from the OpenWeatherMap
 3. Create a `.env` file at `/project-folder` then add this line into it:
+
 ```
 VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ```
+
 4. Run this command in your terminal `npm run dev`
 5. The terminal shows which port your localhost runs
 6. Enjoy :D
 
-
 ## Sources, Technologies, and Dependencies
 
 ### Sources
+
 - [Favicon](https://www.svgrepo.com/svg/530233/weather)
 - [LoaderIcon](https://gifer.com/en/ZZ5H)
 
 ### APIs
+
 - [OpenWheatherMap API](https://openweathermap.org/)
   - [Current Weather API](https://openweathermap.org/current)
   - [Geocoding API](https://openweathermap.org/api/geocoding-api)
 
 ### Technologies
+
 - React
 - TypeScript
 - SCSS
@@ -54,6 +67,7 @@ VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 - Geolocation API
 
 ### Dependencies
+
 ```json
  "dependencies": {
     "@tanstack/react-query": "^5.8.3",
@@ -66,6 +80,7 @@ VITE_OPENWEATHERMAP_APIKEY=paste-your-api-key-here
 ```
 
 ### DevDependencies
+
 ```json
  "devDependencies": {
     "@types/node": "^20.4.9",
